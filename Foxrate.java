@@ -1,7 +1,7 @@
 /*
  *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License version 2 as published by
- *  the Free Software Foundation
+ *  it under the terms of the GNU General Public License version 2 as 
+ *  published by the Free Software Foundation
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -18,7 +18,7 @@
  * Info url : http://kirostudio.com
  * 
  * Foxrate.java
- * Mobile Device Currency Exchange Application.
+ * Mobile Device Currency Exchange Application 
  *
  * 
  * Currency exchange data taken from http://www.ecb.int/stats/exchange/eurofxref/html/index.en.html

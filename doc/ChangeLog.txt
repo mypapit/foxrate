@@ -1,0 +1,2 @@
+[26 Sept 2007 - foxrate 1.0]
+- first official release

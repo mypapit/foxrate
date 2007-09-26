@@ -1,0 +1,6 @@
+TODO
+- better documentation
+- improved website presentation
+- test on more popular phones
+- sort out currency nicely
+- robust server code handling

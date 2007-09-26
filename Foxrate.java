@@ -18,7 +18,7 @@
  * Info url : http://kirostudio.com
  * 
  * Foxrate.java
- * Mobile Device Currency Exchange Application 
+ * Mobile Device Currency Exchange Application.
  *
  * 
  * Currency exchange data taken from http://www.ecb.int/stats/exchange/eurofxref/html/index.en.html

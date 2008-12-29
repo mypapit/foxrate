@@ -107,7 +107,7 @@ public void convertCurrency()
 			double result = to.doubleValue()/from.doubleValue() * Double.parseDouble(tfFrom.getString());
 			
 			
-			tfTo.setString(""+(double)(int)((result+0.00005)*10000.0)/10000.0);
+			tfTo.setString(""+(double)(int)((result+0.0005)*1000.0)/1000.0);
 			//Double result = new Double (rate*original);
 			//System.out.println("From " + from.toString() + "To " + to.toString() + " Value " + result.toString());
 			

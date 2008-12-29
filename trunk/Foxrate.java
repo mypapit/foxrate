@@ -16,6 +16,7 @@
  * Copyright 2007 Mohammad Hafiz bin Ismail. All rights reserved.
  *
  * Info url : http://kirostudio.com
+ * Project Code: http://foxrate.googlecode.com
  * 
  * Foxrate.java
  * Mobile Device Currency Exchange Application 
@@ -42,18 +43,23 @@ public class Foxrate extends MIDlet implements CommandListener
 	private RecordStore rs;
 	private StringItem siDate;
 	private Command cmdExit,cmdConvert,cmdAbout,cmdUpdate, cmdSwap;
-	private String[] currency = {"Euro (EUR)","US Dollar (USD)","Japanese Yes (JPY)",
-	"Bulgarian Lev (BGN)","Cyprus Pound (CYP)","Czech Korona (CZK)","Danish Korone (DKK)",
+	private String[] currency = {"Euro (EUR)","US Dollar (USD)","Japanese Yen (JPY)",
+	"Bulgarian Lev (BGN)","Czech Korona (CZK)","Danish Korone (DKK)",
 	"Estonian Krune (EEK)",	"British Pound (GBP)","Hungarian Forien (HUF)","Lithuanan Litas (LTL)",
-	"Latvian Lats (LVL)","Maltese Lira (MTL)","Polish Zloty (PLN)","Romanian Neu (RON)",
-	"Swedish Koruna (SEK)","Slovak Koruna (SKK)", "Swiss Franc (CHF)","Icelandic krona (ISK)",
-	"Norwegian krone (NOK)","Croatian Kuna (HRK)","Russian Rouble (RUB)",
-	"Turkish lira (TRY)","Aus Dollar (AUD)","Canadian Dollar (CAD)","Chinese yuan (CNY)",
-	"Hong Kong Dollar (HKD)","Indo Rupiah (IDR)","S. Korean Won (KRW)","Malaysian Ringgit (MYR)",	
-	"New Zealand Dollar (NZD)","Philippine Peso (PHP)",
-	"S'pore Dollar (SGD)","Thai Bath (THB)","S.African Rand (ZAR)"};
+	"Latvian Lats (LVL)","Polish Zloty (PLN)","Romanian Neu (RON)","Swedish Koruna (SEK)",
+	"Slovak Koruna (SKK)", "Swiss Franc (CHF)","Norwegian krone (NOK)","Croatian Kuna (HRK)","Russian Rouble (RUB)",
+	"Turkish lira (TRY)","Aus Dollar (AUD)","Brazillian Real (BRL)","Canadian Dollar (CAD)",
+	"Chinese Yuan (CNY)","Hong Kong Dollar (HKD)","Indonesian Rupiah (IDR)","Korean Won (KRW)",
+	"Mexican Peso (MXN)","Malaysian Ringgit (MYR)","New Zealand Dollar (NZD)","Phillipine Peso (PHP)",
+	"Singaporean Dollar (SGD)","Thai Bath (THB)","South African Rand (ZAR)"};
 	
-	double preload[] = {1.0,1.3897, 159.52, 1.9558, 0.5842, 27.483, 7.4476, 15.6466, 0.68525, 253.94, 3.4528, 0.7020, 0.4293, 3.7815, 3.3265, 9.2766, 33.662, 1.6415, 88.74, 7.8345, 7.3285, 35.2250, 1.7576, 1.6565, 1.4360, 10.4373, 10.8256, 13066.65, 1294.64, 4.8327, 1.9437, 64.357, 2.0987, 44.535, 9.9189};
+	double preload[] = {1.000,1.4005, 126.65, 1.9558, 26.394, 
+			    7.4495, 15.6466, 0.94930, 267.76,3.4528,
+			    0.7061, 4.0863, 3.9754, 11.2305, 30.220, 
+			    1.5043, 9.9150, 7.3116, 40.1930, 2.1313, 
+			    2.0540, 3.3338, 1.6984, 9.5790, 10.8542, 
+			    15720.61, 1836.48, 18.6827, 4.8730, 2.4371, 
+			    66.540, 2.0201, 48.464, 13.4742};
 	
 	
 	public Vector vector;
@@ -69,7 +75,7 @@ public class Foxrate extends MIDlet implements CommandListener
 	
 		
 		
-		aboutform = new AboutForm("About","foxrate client 1.0","/foxrate.png");
+		aboutform = new AboutForm("About","foxrate client 1.5","/foxrate.png");
 		aboutform.setHyperlink("http://foxrate.org",this);
 		aboutform.setCommandListener(this);
 		aboutform.setCopyright("Mohammad Hafiz","2007");
@@ -93,6 +99,7 @@ public class Foxrate extends MIDlet implements CommandListener
 		form.addCommand(cmdSwap);
 		form.addCommand(cmdAbout);
 		form.addCommand(cmdUpdate);
+
 		
 		
 		form.setCommandListener(this);
@@ -365,7 +372,7 @@ public void preloadData()
 class GetData implements Runnable,CommandListener {
 
 Foxrate midlet;
-Gauge g;
+//Gauge g;
 Form frmRunning;
 String sb;
 public Command cmdCancel;
@@ -374,15 +381,14 @@ public GetData (Foxrate midlet)
 {
 	this.midlet = midlet;
 	//this.vector = midlet.vector;
-	g = new Gauge("Retrieving...",false,Gauge.INDEFINITE,Gauge.CONTINUOUS_RUNNING);
+	
 	frmRunning = new Form("Updating Currency Data");
 	cmdCancel = new Command("Cancel",Command.CANCEL,5);
 	frmRunning.addCommand(cmdCancel);
 	frmRunning.setCommandListener(this);
-	frmRunning.append(g);
+	frmRunning.append(new Gauge("Retrieving...",false,Gauge.INDEFINITE,Gauge.CONTINUOUS_RUNNING));
 	
-	cmdCancel = new Command("Cancel",Command.CANCEL,5);
-	frmRunning.addCommand(cmdCancel);
+
 
 	
 	midlet.display.setCurrent(frmRunning);
